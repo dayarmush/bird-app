@@ -13,6 +13,10 @@ app.json.compact = False
 migrate = Migrate(app, db)
 db.init_app(app)
 
+@app.get('/')
+def index():
+    return '<h1>Hello World</h1>'
+
 @app.get('/birds')
 def get_birds():
     birds = [bird.to_dict() for bird in Bird.query.all()]
