@@ -21,3 +21,9 @@ def index():
 def get_birds():
     birds = [bird.to_dict() for bird in Bird.query.all()]
     return birds, 200
+
+@app.get('/bird/<int:id>')
+def get_by_id(id):
+    bird = Bird.query.filter_by(id=id).first().to_dict()
+    return bird, 200
+
